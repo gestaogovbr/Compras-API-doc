@@ -159,4 +159,210 @@ paths:
         104:
           description: Não foi possível conectar API. 
   
+  /comprasContratos/api-docs/contrato:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+  
+  /comprasContratos/api-docs/contrato/arquivo:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+  /comprasContratos/api-docs/contrato/cronograma:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.   
+          
+  
+  /comprasContratos/api-docs/contrato/despesa_acessoria:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.    
+  
+  /comprasContratos/api-docs/contrato/empenho:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.    
+  
+  /comprasContratos/api-docs/contrato/fatura:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /comprasContratos/api-docs/contrato/garantia:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.  
+  
+  /comprasContratos/api-docs/contrato/historico:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.   
+  
+  /comprasContratos/api-docs/contrato/item_compras_contratos:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.   
+  
+  /comprasContratos/api-docs/contrato/preposto:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.    
+  
+  /comprasContratos/api-docs/contrato/responsavel:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.   
+          
+  /comprasContratos/api-docs/contrato/terceirizado:
+    get:
+      tags:
+      - Contratos a partir de 2021
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.   
+  
            
