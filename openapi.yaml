@@ -365,4 +365,463 @@ paths:
         104:
           description: Não foi possível conectar API.   
   
+  /fornecedores/api-docs/ambito_ocorrencia:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/cnae:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/fornecedor_pf:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/fornecedor_pj:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/linha_fornecimento:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/municipio:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/natureza_juridica:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/ocorrencia_fornecedor:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/porte_empresa:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/prazo_ocorrencia:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+          
+  /fornecedores/api-docs/ramo_negocio:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/tipo_ocorrencia:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /fornecedores/api-docs/fornecedores:
+    get:
+      tags:
+      - Fornecedores
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/irp:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/item_irp:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/licitacao:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/item_licitacao:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/modalidade_licitacao:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/orgao:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/preco_praticado:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/item_preco_praticado:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/registro_preco:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/registro_preco_item_fornecedor:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/registro_preco_item_fornecedor_renegociacao:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/item_registro_preco:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/uasg:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /licitacoes/api-docs/rdc:
+    get:
+      tags:
+      - Licitações
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
            
