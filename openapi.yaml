@@ -11,6 +11,7 @@ info:
     email: seges.cginf@economia.gov.br
 servers:
 - url: http://api.compras.nuvem.gov.br
+- url: https://api.compras.nuvem.gov.br
 tags:
 - name: Compras sem Licitação
 - name: Contratos até 2020
