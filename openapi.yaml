@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  description: |
+    Dados Abertos do Sistema Integrado de Administração e Serviços Gerais - SIASG. 
+
+    O SIASG é o sistema onde se operacionaliza as compras do Governo Federal. Essa operacionalização se dá em diversos módulos, contemplando o catálogo de materiais e serviços (CATMAT / CATSER), o cadastramento e divulgação da licitação (SIDEC, Divulgação), as intenções de registros de preços (IRP), o cadastramento dos fornecedores (SICAF), a realização das licitações (Compras governamentais, Sessão Pública, RDC), o resultado das licitações (SISPP, SISRP), os empenhos de pagamentos (SISME) e o registro e gestão dos contratos (SICON). 
+  version: "1.0.0"
+  title: API de Compras Governamentais
+  termsOfService: 'http://api.compras.nuvem.gov.br/docs/home.html'
+  contact:
+    email: seges.cginf@economia.gov.br
+servers:
+- url: http://api.compras.nuvem.gov.br
+tags:
+- name: Compras sem Licitação
+- name: Contratos até 2020
+- name: Contratos a partir de 2021
+- name: Fornecedores
+- name: Licitações
+- name: Pregões
+- name: Materiais
+- name: PGC
+- name: Serviços
+paths:
+  /compraSemLicitacao/api-docs/compra_slicitacao:
+    get:
+      tags:
+      - Compras sem Licitação
+      summary: Consultar compras sem licitação
+      description: Consultar compras sem licitaçãoConsultar compras sem licitaçãoConsultar compras sem licitaçãoConsultar compras sem licitaçãoConsultar compras sem licitação.
+      
+      responses:
+        200:
+          description: Ok
+          
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+   
+  /compraSemLicitacao/api-docs/compra_slicitacao/item:
+    get:
+      tags:
+      - Compras sem Licitação
+      summary: Consultar compras sem licitação por item
+      description: Consultar compras sem licitação por item. Consultar compras sem licitação por item. Consultar compras sem licitação por item.
+      
+      responses:
+        200:
+          description: Ok
+          
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.         
+          
+  /contratos/api-docs:
+    get:
+      tags:
+      - Contratos até 2020
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.  
+            
+  
+  /contratos/api-docs/contrato/aditivo:
+    get:
+      tags:
+      - Contratos até 2020
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+  /contratos/api-docs/contrato/apostilamento:
+    get:
+      tags:
+      - Contratos até 2020
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+  /contratos/api-docs/tipo_contrato:
+    get:
+      tags:
+      - Contratos até 2020
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+  /contratos/api-docs/cronograma:
+    get:
+      tags:
+      - Contratos até 2020
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+  /contratos/api-docs/contrato/evento:
+    get:
+      tags:
+      - Contratos até 2020
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API. 
+  
+           
