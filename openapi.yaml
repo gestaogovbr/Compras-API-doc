@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.1
 info:
   description: |
     Dados Abertos do Sistema Integrado de Administração e Serviços Gerais - SIASG. 
