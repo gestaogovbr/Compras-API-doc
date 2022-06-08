@@ -824,4 +824,225 @@ paths:
         104:
           description: Não foi possível conectar API.
   
+  /pregoes/api-docs/pregao:
+    get:
+      tags:
+      - Pregões
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /pregoes/api-docs/pregao_item:
+    get:
+      tags:
+      - Pregões
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /materiais/api-docs/classe:
+    get:
+      tags:
+      - Materiais
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /materiais/api-docs/grupo:
+    get:
+      tags:
+      - Materiais
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /materiais/api-docs/material:
+    get:
+      tags:
+      - Materiais
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /materiais/api-docs/pdm:
+    get:
+      tags:
+      - Materiais
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /pgc/api-docs/pgc:
+    get:
+      tags:
+      - PGC
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /docs/servicos/classe:
+    get:
+      tags:
+      - Serviços
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /docs/servicos/divisao:
+    get:
+      tags:
+      - Serviços
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /docs/servicos/grupo:
+    get:
+      tags:
+      - Serviços
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /docs/servicos/secao:
+    get:
+      tags:
+      - Serviços
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /docs/servicos/servico:
+    get:
+      tags:
+      - Serviços
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
+  /docs/servicos/subclasse:
+    get:
+      tags:
+      - Serviços
+      summary: Consultar contratos.
+      description: Consultar contratos Consultar contratos.
+      responses:
+        200:
+          description: OK
+           
+
+        102:
+          description: Objeto não encontrado(a).
+          
+        104:
+          description: Não foi possível conectar API.
+  
            
