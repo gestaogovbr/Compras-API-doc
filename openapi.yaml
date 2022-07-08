@@ -10,8 +10,8 @@ info:
   contact:
     email: seges.cginf@economia.gov.br
 servers:
-- url: http://compras.dados.gov.br/docs
-- url: https://compras.dados.gov.br/docs
+- url: http://compras.dados.gov.br
+- url: https://compras.dados.gov.br
 tags:
 - name: Compras sem Licitação
 - name: Contratos até 2020
