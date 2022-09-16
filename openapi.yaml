@@ -1,1049 +1,2008 @@
 openapi: 3.0.1
 info:
   description: |
-    Dados Abertos do Sistema Integrado de Administração e Serviços Gerais - SIASG. 
+    Dados Abertos do Sistema Integrado de Administração e Serviços Gerais - SIASG.
 
-    O SIASG é o sistema onde se operacionaliza as compras do Governo Federal. Essa operacionalização se dá em diversos módulos, contemplando o catálogo de materiais e serviços (CATMAT / CATSER), o cadastramento e divulgação da licitação (SIDEC, Divulgação), as intenções de registros de preços (IRP), o cadastramento dos fornecedores (SICAF), a realização das licitações (Compras governamentais, Sessão Pública, RDC), o resultado das licitações (SISPP, SISRP), os empenhos de pagamentos (SISME) e o registro e gestão dos contratos (SICON). 
+    O SIASG é o sistema onde se operacionaliza as compras do Governo Federal. Essa operacionalização se dá em diversos módulos, contemplando o catálogo de materiais e serviços (CATMAT / CATSER), o cadastramento e divulgação da licitação (SIDEC, Divulgação), as intenções de registros de preços (IRP), o cadastramento dos fornecedores (SICAF), a realização das licitações (Compras governamentais, Sessão Pública, RDC), o resultado das licitações (SISPP, SISRP), os empenhos de pagamentos (SISME) e o registro e gestão dos contratos (SICON).
   version: "1.0.0"
   title: API de Compras Governamentais
-  termsOfService: 'http://api.compras.nuvem.gov.br/docs/home.html'
+  termsOfService: 'http://api.compras.dados.gov.br/docs/home.html'
   contact:
     email: seges.cginf@economia.gov.br
 servers:
-- url: http://api.compras.nuvem.gov.br
-- url: https://api.compras.nuvem.gov.br
+- url: http://compras.dados.gov.br
+
 tags:
-- name: Compras sem Licitação
-- name: Contratos até 2020
-- name: Contratos a partir de 2021
-- name: Fornecedores
-- name: Licitações
-- name: Pregões
-- name: Materiais
-- name: PGC
-- name: Serviços
+- name: Contratos
+- name: Cronogramas
+- name: Despesas Acessorias
+- name: Empenhos
+- name: Faturas
+- name: Garantias
+- name: Historicos
+- name: Itens
+- name: Prepostos
+- name: Responsaveis
+- name: Terceirizados
 paths:
-  /compraSemLicitacao/api-docs/compra_slicitacao:
+  /comprasContratos/v1/contratos:
     get:
       tags:
-      - Compras sem Licitação
-      summary: Consultar compras sem licitação
-      description: Consultar compras sem licitaçãoConsultar compras sem licitaçãoConsultar compras sem licitaçãoConsultar compras sem licitaçãoConsultar compras sem licitação.
-      
+      - Contratos
+      summary: Listar contratos
+      description: Retorna uma lista com todos os contratos
+      operationId: Contratos
+      parameters:
+      - name: categoria
+        in: query
+        required: false
+        description: 'Categoria (Ex.: categoria=compras)'
+        schema:
+          type: string
+          default: null
+      - name: codigo_compra
+        in: query
+        required: false
+        description: 'Código da compra (Ex.: codigo_compra=11540605003702019)'
+        schema:
+          type: string
+          default: null
+      - name: codigo_contrato
+        in: query
+        required: false
+        description: 'Código do contrato (Ex.: codigo_contrato=11540650000292019)'
+        schema:
+          type: string
+          default: null
+      - name: codigo_modalidade
+        in: query
+        required: false
+        description: 'Código da modalidade (Ex.: codigo_modalidade=05, sempre 2 dígitos)'
+        schema:
+          type: string
+          default: null
+      - name: codigo_tipo
+        in: query
+        required: false
+        description: 'Tipo do contrato (Ex.: codigo_tipo=50)'
+        schema:
+          type: integer
+          default: null
+      - name: data_assinatura
+        in: query
+        required: false
+        description: 'Data da assinatura (Ex.: data_assinatura=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_assinatura_max
+        in: query
+        required: false
+        description: 'Data máxima da assinatura (Ex.: data_assinatura_max=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_assinatura_min
+        in: query
+        required: false
+        description: 'Data mínima da assinatura (Ex.: data_assinatura_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_publicacao
+        in: query
+        required: false
+        description: 'Data de publicação (Ex.: data_publicacao=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_publicacao_max
+        in: query
+        required: false
+        description: 'Data máxima de publicação (Ex.: data_publicacao_max=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_publicacao_min
+        in: query
+        required: false
+        description: 'Data mínima de publicação (Ex.: data_publicacao_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: fornecedor_cnpj_cpf_idgener
+        in: query
+        required: false
+        description: 'Identificador do fornecedor (Ex.: fornecedor_cnpj_cpf_idgener=04.936.559/0001-89)'
+        schema:
+          type: string
+          default: null
+      - name: fornecedor_nome
+        in: query
+        required: false
+        description: 'Razão social/Nome do fornecedor (Ex.: fornecedor_nome=empresa brasileira
+          de correios e telegrafos)'
+        schema:
+          type: string
+          default: null
+      - name: fornecedor_tipo
+        in: query
+        required: false
+        description: 'Tipo de fornecedor (Ex.: fornecedor_tipo=juridica)'
+        schema:
+          type: string
+          default: null
+      - name: fundamento_legal
+        in: query
+        required: false
+        description: 'Fundamento legal (Ex.: fundamento_legal=lei 8.666/93)'
+        schema:
+          type: string
+          default: null
+      - name: id
+        in: query
+        required: false
+        description: 'Id do contrato (Ex.: id=1615)'
+        schema:
+          type: integer
+          default: null
+      - name: informacao_complementar
+        in: query
+        required: false
+        description: 'Informação complementar (Ex.: informacao_complementar=sei 0448453)'
+        schema:
+          type: string
+          default: null
+      - name: licitacao_numero
+        in: query
+        required: false
+        description: 'Número da licitação (Ex.: licitacao_numero=00019/2019)'
+        schema:
+          type: string
+          default: null
+      - name: modalidade
+        in: query
+        required: false
+        description: 'Modalidade (Ex.: modalidade=pregão)'
+        schema:
+          type: string
+          default: null
+      - name: num_parcelas
+        in: query
+        required: false
+        description: 'Número de parcelas (Ex.: num_parcelas=30)'
+        schema:
+          type: integer
+          default: null
+      - name: numero
+        in: query
+        required: false
+        description: 'Número do contrato (Ex.: numero=00007/2019)'
+        schema:
+          type: string
+          default: null
+      - name: objeto
+        in: query
+        required: false
+        description: 'Objeto (Ex.: objeto=locacao)'
+        schema:
+          type: string
+          default: null
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: 'Atributo utilizado para indicar se ordenação é crescente ou decrescente
+          (Ex.: order=desc)'
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: 'Atributo utilizado para ordenação (Ex.: orderBy=valor_inicial)'
+        schema:
+          type: string
+          default: null
+      - name: orgao_codigo
+        in: query
+        required: false
+        description: 'Código SIASG do orgão contratante (Ex.: orgao_codigo=2000)'
+        schema:
+          type: integer
+          default: null
+      - name: orgao_nome
+        in: query
+        required: false
+        description: 'Nome do orgão contratante (Ex.: orgao_nome=senado federal)'
+        schema:
+          type: string
+          default: null
+      - name: processo
+        in: query
+        required: false
+        description: 'Processo (Ex.: processo=50840.000439/2016-94)'
+        schema:
+          type: string
+          default: null
+      - name: receita_despesa
+        in: query
+        required: false
+        description: 'Tipo de contrato (Ex.: receita_despesa=despesa)'
+        schema:
+          type: string
+          default: null
+      - name: tipo
+        in: query
+        required: false
+        description: 'Descrição do tipo de Contrato (Ex.: tipo=Contrato)'
+        schema:
+          type: string
+          default: null
+      - name: unidade_codigo
+        in: query
+        required: false
+        description: 'Código da UASG contratante (Ex.: unidade_codigo=20001)'
+        schema:
+          type: integer
+          default: null
+      - name: unidade_compra
+        in: query
+        required: false
+        description: 'Unidade compra (Ex.: unidade_compra=200005)'
+        schema:
+          type: integer
+          default: null
+      - name: unidade_nome
+        in: query
+        required: false
+        description: 'Nome completo da UASG contratante (Ex.: unidade_nome=tribunal de contas
+          da uniao)'
+        schema:
+          type: string
+          default: null
+      - name: unidade_nome_resumido
+        in: query
+        required: false
+        description: 'Sigla/Nome UASG contratante (Ex.: unidade_nome_resumido=tcu)'
+        schema:
+          type: string
+          default: null
+      - name: unidade_origem_codigo
+        in: query
+        required: false
+        description: Código da unidade de origem
+        schema:
+          type: string
+          default: null
+      - name: unidade_origem_nome
+        in: query
+        required: false
+        description: Nome da unidade de origem
+        schema:
+          type: string
+          default: null
+      - name: valor_acumulado
+        in: query
+        required: false
+        description: 'Valor acumulado (Ex.: valor_acumulado=30000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_global
+        in: query
+        required: false
+        description: 'Valor global (Ex.: valor_global=3500000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_global_max
+        in: query
+        required: false
+        description: 'Valor global máximo (Ex.: valor_global_max=500000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_global_min
+        in: query
+        required: false
+        description: 'Valor global mínimo (Ex.: valor_global_min=20000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_inicial
+        in: query
+        required: false
+        description: 'Valor inicial (Ex.: valor_inicial=2000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_inicial_max
+        in: query
+        required: false
+        description: 'Valor inicial máximo (Ex.: valor_inicial_max=20000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_inicial_min
+        in: query
+        required: false
+        description: 'Valor inicial mínimo (Ex.: valor_inicial_min=1000)'
+        schema:
+          type: number
+          default: null
+      - name: valor_parcela
+        in: query
+        required: false
+        description: 'Valor da parcela (Ex.: valor_parcela=15000)'
+        schema:
+          type: number
+          default: null
+      - name: vigencia_fim
+        in: query
+        required: false
+        description: 'Data do fim da vigência (Ex.: vigencia_fim=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_fim_max
+        in: query
+        required: false
+        description: 'Data máxima do fim da vigência (Ex.: vigencia_fim_max=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_fim_min
+        in: query
+        required: false
+        description: 'Data mínima do fim da vigência (Ex.: vigencia_fim_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_inicio
+        in: query
+        required: false
+        description: 'Data do início da vigência (Ex.: vigencia_inicio=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_inicio_max
+        in: query
+        required: false
+        description: 'Data máxima do início da vigência (Ex.: vigencia_inicio_max=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_inicio_min
+        in: query
+        required: false
+        description: 'Data mínima do início da vigência (Ex.: vigencia_inicio_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+
       responses:
         200:
           description: Ok
-          
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contratos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Contratos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Contratos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-   
-  /compraSemLicitacao/api-docs/compra_slicitacao/item:
+
+  /comprasContratos/doc/contrato/{id}/cronogramas:
     get:
       tags:
-      - Compras sem Licitação
-      summary: Consultar compras sem licitação por item
-      description: Consultar compras sem licitação por item. Consultar compras sem licitação por item. Consultar compras sem licitação por item.
-      
+      - Cronogramas
+      summary: Listar Cronogramas
+      description: Retorna uma lista de todos os cronogramas de um contrato
+      operationId: Cronogramas
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: string
+          default: 136100
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
       responses:
         200:
           description: Ok
-          
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cronogramas'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Cronogramas'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Cronogramas'
         102:
           description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.         
-          
-  /contratos/api-docs:
-    get:
-      tags:
-      - Contratos até 2020
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
 
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.  
-            
-  
-  /contratos/api-docs/contrato/aditivo:
-    get:
-      tags:
-      - Contratos até 2020
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  /contratos/api-docs/contrato/apostilamento:
-    get:
-      tags:
-      - Contratos até 2020
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  /contratos/api-docs/tipo_contrato:
-    get:
-      tags:
-      - Contratos até 2020
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  /contratos/api-docs/cronograma:
-    get:
-      tags:
-      - Contratos até 2020
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  /contratos/api-docs/contrato/evento:
-    get:
-      tags:
-      - Contratos até 2020
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  /comprasContratos/api-docs/contrato:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  
-  /comprasContratos/api-docs/contrato/arquivo:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API. 
-  
-  /comprasContratos/api-docs/contrato/cronograma:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.   
-          
-  
-  /comprasContratos/api-docs/contrato/despesa_acessoria:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.    
-  
-  /comprasContratos/api-docs/contrato/empenho:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.    
-  
-  /comprasContratos/api-docs/contrato/fatura:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
         104:
           description: Não foi possível conectar API.
-  
-  /comprasContratos/api-docs/contrato/garantia:
+
+  /comprasContratos/doc/contrato/{id}/despesas_acessorias:
     get:
       tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Despesas Acessorias
+      summary: Listar Despesas Acessórias.
+      description: Retorna todas as despesas acessórias de um determinado contrato.
+      operationId: Despesas acessorias
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 84650
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Despesas'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Despesas'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Despesas'
         102:
           description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.  
-  
-  /comprasContratos/api-docs/contrato/historico:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
 
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.   
-  
-  /comprasContratos/api-docs/contrato/item_compras_contratos:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.   
-  
-  /comprasContratos/api-docs/contrato/preposto:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.    
-  
-  /comprasContratos/api-docs/contrato/responsavel:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.   
-          
-  /comprasContratos/api-docs/contrato/terceirizado:
-    get:
-      tags:
-      - Contratos a partir de 2021
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.   
-  
-  /fornecedores/api-docs/ambito_ocorrencia:
-    get:
-      tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/cnae:
+
+  /comprasContratos/doc/contrato/{id}/empenhos:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Empenhos
+      summary: Listar Empenhos.
+      description: Retorna uma lista com todos os empenhos de um contrato.
+      operationId: Empenhos
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato.
+        schema:
+          type: integer
+          default: 50500
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empenhos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Empenhos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Empenhos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/fornecedor_pf:
+
+
+  /comprasContratos/doc/contrato/{id}/faturas:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Faturas
+      summary: Listar Faturas.
+      description: Retorna todas as faturas de um contrato.
+      operationId: Faturas
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 36939
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Faturas'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Faturas'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Faturas'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/fornecedor_pj:
+
+
+  /comprasContratos/doc/contrato/{id}/garantias:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Garantias
+      summary: Listar Garantias.
+      description: Retorna todas as garantias de um contrato.
+      operationId: Garantias
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 105754
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Garantias'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Garantias'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Garantias'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/linha_fornecimento:
+
+  /comprasContratos/doc/contrato/{id}/historicos:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Historicos
+      summary: Listar Históricos.
+      description: Retorna todos os históricos de um contrato
+      operationId: Historicos
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 136100
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Historicos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Historicos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Historicos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/municipio:
+
+
+  /comprasContratos/doc/contrato/{id}/itens_compras_contratos:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Itens
+      summary: Listar Itens de contratos cadastrados
+      description: Retorna todos os itens de um contrato.
+      operationId: Itens de contratos cadastrados
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 136100
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Itens'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Itens'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Itens'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/natureza_juridica:
+
+
+
+  /comprasContratos/doc/contrato/{id}/prepostos:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Prepostos
+      summary: Listar Prepostos
+      description: Retorna todos os prepostos de um contrato.
+      operationId: Prepostos cadastrados
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 119441
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prepostos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Prepostos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Prepostos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/ocorrencia_fornecedor:
+
+
+  /comprasContratos/doc/contrato/{id}/responsaveis:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Responsaveis
+      summary: Listar Responsaveis
+      description: Retorna todos os responsáveis de um contrato.
+      operationId: Responsaveis cadastrados
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 2268
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/porte_empresa:
+
+  /comprasContratos/doc/contrato/{id}/terceirizados:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Terceirizados
+      summary: Listar Terceirizados
+      description: Retorna todos os terceirizados de um contrato.
+      operationId: Terceirizados cadastrados
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 4198
+      - name: offset
+        in: query
+        required: false
+        description: 'Quantidade de registros ignorados a partir do início da lista de resultados
+          ordenando pelo ID. Útil para paginar consultas que retornam mais que 500 resultados.
+          Ex.: offset=3000, retorna até 500 registros ignorando os 3000 primeiros.'
+        schema:
+          type: integer
+          default: null
+      - name: order
+        in: query
+        required: false
+        description: Atributo utilizado para indicar se ordenação é crescente ou decrescente
+        schema:
+          type: string
+          default: null
+      - name: order_by
+        in: query
+        required: false
+        description: Atributo utilizado para ordenação
+        schema:
+          type: string
+          default: null
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Terceirizados'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Terceirizados'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Terceirizados'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/prazo_ocorrencia:
+
+  /comprasContratos/doc/contrato/{id}:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Contratos
+      summary: Consultar Contrato
+      description: Retorna um contrato pelo seu identificador único (id).
+      operationId: Contrato
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 114325
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contratos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Contratos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Contratos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-          
-  /fornecedores/api-docs/ramo_negocio:
+
+  /comprasContratos/doc/contrato/{id}/cronogramas/{cronograma}:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Cronogramas
+      summary: Consultar Cronograma
+      description: Retorna um cronograma pelo seu identificador único (id).
+      operationId: Cronograma
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 136100
+      - name: cronograma
+        in: path
+        required: true
+        description: Id do cronograma
+        schema:
+          type: integer
+          default: 28589500
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cronogramas'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Cronogramas'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Cronogramas'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/tipo_ocorrencia:
+
+  /comprasContratos/doc/contrato/{id}/despesas_acessorias/{despesa_acessoria}:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Despesas Acessorias
+      summary: Consultar Despesa Acessória
+      description: Retorna uma despesa acessória pelo seu identificador único (id).
+      operationId: Despesa Acessoria
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 84650
+      - name: despesa_acessoria
+        in: path
+        required: true
+        description: Id da despesa acessória
+        schema:
+          type: integer
+          default: 215
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Despesas'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Despesas'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Despesas'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /fornecedores/api-docs/fornecedores:
+
+  /comprasContratos/doc/contrato/{id}/empenhos/{empenho}:
     get:
       tags:
-      - Fornecedores
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Empenhos
+      summary: Consultar Empenho
+      description: Retorna um empenho pelo seu identificador único (id).
+      operationId: Empenho
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 2629
+      - name: empenho
+        in: path
+        required: true
+        description: Id do empenho
+        schema:
+          type: integer
+          default: 8415275
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empenhos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Empenhos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Empenhos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/irp:
+
+  /comprasContratos/doc/contrato/{id}/faturas/{fatura}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Faturas
+      summary: Consultar Fatura
+      description: Retorna uma fatura pelo seu identificador único (id).
+      operationId: Fatura
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 94113
+      - name: fatura
+        in: path
+        required: true
+        description: Id da fatura
+        schema:
+          type: integer
+          default: 78330
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Faturas'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Faturas'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Faturas'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/item_irp:
+
+  /comprasContratos/doc/contrato/{id}/garantias/{garantia}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Garantias
+      summary: Consultar Garantia
+      description: Retorna uma garantia pelo seu identificador único (id).
+      operationId: Garantia
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 115090
+      - name: garantia
+        in: path
+        required: true
+        description: Id da garantia
+        schema:
+          type: integer
+          default: 8423
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Garantias'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Garantias'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Garantias'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/licitacao:
+
+  /comprasContratos/doc/contrato/{id}/historicos/{historico}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Historicos
+      summary: Consultar Histórico
+      description: Retorna um histórico pelo seu identificador único (id).
+      operationId: Historico
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 93390
+      - name: historico
+        in: path
+        required: true
+        description: Id do historico
+        schema:
+          type: integer
+          default: 337465
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Historicos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Historicos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Historicos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/item_licitacao:
+
+  /comprasContratos/doc/contrato/{id}/itens_compras_contratos/{item_compras_contratos}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Itens
+      summary: Consultar Item
+      description: Retorna um item pelo seu identificador único (id).
+      operationId: Item Compras Contratos
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 136100
+      - name: item_compras_contratos
+        in: path
+        required: true
+        description: Id do item
+        schema:
+          type: integer
+          default: 853152
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Itens'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Itens'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Itens'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/modalidade_licitacao:
+
+  /comprasContratos/doc/contrato/{id}/prepostos/{preposto}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Prepostos
+      summary: Consultar Preposto
+      description: Retorna um preposto pelo seu identificador único (id).
+      operationId: Preposto
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 44820
+      - name: preposto
+        in: path
+        required: true
+        description: Id do preposto
+        schema:
+          type: integer
+          default: 2665
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prepostos'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Prepostos'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Prepostos'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/orgao:
+
+  /comprasContratos/doc/contrato/{id}/responsaveis/{responsavel}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Responsaveis
+      summary: Consultar Responsável
+      description: Retorna um responsável pelo seu identificador único (id).
+      operationId: Responsavel
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 84390
+      - name: responsavel
+        in: path
+        required: true
+        description: Id do responsavel
+        schema:
+          type: integer
+          default: 41285
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
         102:
           description: Objeto não encontrado(a).
-          
+
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/preco_praticado:
+
+  /comprasContratos/doc/contrato/{id}/terceirizados/{terceirizado}:
     get:
       tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
+      - Terceirizados
+      summary: Consultar Terceirizado
+      description: Retorna um terceirizado pelo seu identificador único (id).
+      operationId: Terceirizado
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id do contrato
+        schema:
+          type: integer
+          default: 3140
+      - name: terceirizado
+        in: path
+        required: true
+        description: Id do terceirizado
+        schema:
+          type: integer
+          default: 4325
+
       responses:
         200:
-          description: OK
-           
-
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Responsaveis'
         102:
           description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/item_preco_praticado:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
 
-        102:
-          description: Objeto não encontrado(a).
-          
         104:
           description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/registro_preco:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
 
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/registro_preco_item_fornecedor:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
 
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/registro_preco_item_fornecedor_renegociacao:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
+components:
+  schemas:
+    Contratos:
+      type: object
+      properties:
+        categoria:
+          type: string
+          description: Categoria do objeto do contrato
+        codigo_compra:
+          type: string
+          description: Código da compra (Link para o módulo de licitação)
+        codigo_contrato:
+          type: string
+          description: Identificador do contrato
+        codigo_tipo:
+          type: integer
+          description: Código do tipo de contrato
+        data_assinatura:
+          type: string
+          description: Data de assinatura do contrato
+        data_publicacao:
+          type: string
+          description: Data de publicação do contrato
+        fornecedor_cnpj_cpf_idgener:
+          type: string
+          description: Identificador do fornecedor (CNPJ, CPF, ID Genérico)
+        fornecedor_nome:
+          type: string
+          description: Razão social ou nome do fornecedor
+        fornecedor_tipo:
+          type: string
+          description: Tipo de fornecedor
+        fundamento_legal:
+          type: string
+          description: Fundamento legal da contratação
+        id:
+          type: integer
+          description: ID
+        informacao_complementar:
+          type: string
+          description: Informação complementar da contratação
+        licitacao_numero:
+          type: string
+          description: Identificador da licitação
+        modalidade:
+          type: string
+          description: Descrição da modalidade da licitação
+        modalidade_codigo:
+          type: string
+          description: Código da modalidade da licitação
+        num_parcelas:
+          type: integer
+          description: Número de parcelas do contrato
+        numero:
+          type: string
+          description: Número do contrato
+        objeto:
+          type: string
+          description: Descrição do objeto contratado
+        orgao_codigo:
+          type: string
+          description: Campo de cinco dígitos com o código SIASG do órgão contratante
+        orgao_nome:
+          type: string
+          description: Nome do órgão contratante
+        processo:
+          type: string
+          description: Número do processo administrativo da contratação
+        receita_despesa:
+          type: string
+          description: Tipo de contrato (Receita ou Despesa)
+        tipo:
+          type: string
+          description: Descrição do tipo de contrato
+        unidade_codigo:
+          type: integer
+          description: Campo de seis dígitos que indica o código da UASG contratante
+        unidade_compra:
+          type: integer
+          description: Código da UASG da compra
+        unidade_nome:
+          type: string
+          description: Nome da UASG contratante
+        unidade_nome_resumido:
+          type: string
+          description: Nome resumido ou sigla da UASG contratante
+        unidade_origem_codigo:
+          type: string
+          description: Código da unidade de origem
+        unidade_origem_nome:
+          type: string
+          description: Nome da unidade de origem
+        valor_acumulado:
+          type: number
+          description: Valor acumulado do contrato consideradas todas
+              as alterações realizadas na vigência do contrato
+        valor_global:
+          type: number
+          description: Valor global do contrato
+        valor_inicial:
+          type: number
+          description: Valor inicial do contrato
+        valor_parcela:
+          type: number
+          description: Valor de cada parcela do contrato
+        vigencia_fim:
+          type: string
+          description: Data de término de vigência do contrato
+        vigencia_inicio:
+          type: string
+          description: Data de início de vigência do contrato
 
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/item_registro_preco:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/uasg:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /licitacoes/api-docs/rdc:
-    get:
-      tags:
-      - Licitações
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /pregoes/api-docs/pregao:
-    get:
-      tags:
-      - Pregões
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /pregoes/api-docs/pregao_item:
-    get:
-      tags:
-      - Pregões
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /materiais/api-docs/classe:
-    get:
-      tags:
-      - Materiais
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /materiais/api-docs/grupo:
-    get:
-      tags:
-      - Materiais
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /materiais/api-docs/material:
-    get:
-      tags:
-      - Materiais
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /materiais/api-docs/pdm:
-    get:
-      tags:
-      - Materiais
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /pgc/api-docs/pgc:
-    get:
-      tags:
-      - PGC
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /docs/servicos/classe:
-    get:
-      tags:
-      - Serviços
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /docs/servicos/divisao:
-    get:
-      tags:
-      - Serviços
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /docs/servicos/grupo:
-    get:
-      tags:
-      - Serviços
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /docs/servicos/secao:
-    get:
-      tags:
-      - Serviços
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /docs/servicos/servico:
-    get:
-      tags:
-      - Serviços
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-  /docs/servicos/subclasse:
-    get:
-      tags:
-      - Serviços
-      summary: Consultar contratos.
-      description: Consultar contratos Consultar contratos.
-      responses:
-        200:
-          description: OK
-           
-
-        102:
-          description: Objeto não encontrado(a).
-          
-        104:
-          description: Não foi possível conectar API.
-  
-           
+    Cronogramas:
+      type: object
+      properties:
+        ano_ref:
+          type: string
+          description: Identificação do ano de referência da parcela do cronograma
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        id:
+          type: integer
+          description: ID
+        mes_ref:
+          type: integer
+          description: Mês de referência da parcela do cronograma
+        numero:
+          type: string
+          description: Número do contrato
+        observacao:
+          type: string
+          description: Observação
+        receita_despesa:
+          type: string
+          description: Tipo de contrato
+        retroativo:
+          type: string
+          description: Se o cronograma é retroativo
+        tipo:
+          type: string
+          description: Descrição do tipo de contrato
+        valor:
+          type: number
+          description: Valor da parcela
+        vencimento:
+          type: string
+          description: Data de vencimento da parcela do cronograma
+      required:
+        - id
+        - contrato_id
+    Despesas:
+      properties:
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        descricao_complementar:
+          type: string
+          description: Descrição complementar da despesa acessória
+        id:
+          type: integer
+          description: ID
+        recorrencia_id:
+          type: string
+          description: Descrição da recorrência da despesa acessória
+        tipo_id:
+          type: string
+          description: Descrição do tipo de despesa acessória
+        valor:
+          type: number
+          description: Valor da despesa acesória
+        vencimento:
+          type: string
+          description: Vencimento da despesa acessória
+      required:
+        - id
+        - contrato_id
+    Empenhos:
+      properties:
+        aliquidar:
+          type: number
+          description: Valor a liquidar
+        credor:
+          type: string
+          description: Fornecedor credor
+        empenhado:
+          type: number
+          description: Valor empenhado
+        fonte_recurso:
+          type: string
+          description: Fonte de recurso orçamentário
+        id:
+          type: integer
+          description: ID
+        liquidado:
+          type: number
+          description: Valor liquidado
+        natureza_despesa:
+          type: string
+          description: Natureza Despesa (ND) do empenho, de acordo com o SIAFI
+        numero:
+          type: string
+          description: Número do Empenho
+        pago:
+          type: number
+          description: Valor pago
+        plano_interno:
+          type: string
+          description: Plano interno orçamentário
+        rpaliquidar:
+          type: number
+          description: Valor de restos a pagar a liquidar
+        rpinscrito:
+          type: number
+          description: Valor inscrito em restos a pagar
+        rpliquidado:
+          type: number
+          description: Valor de restos a pagar liquidado
+        rppago:
+          type: number
+          description: Valor de restos a pagar pagos
+      required:
+        - id
+        - contrato_id
+    Faturas:
+      properties:
+        anoref:
+          type: integer
+          description: Ano de referência da fatura
+        ateste:
+          type: string
+          description: Data de ateste da fatura
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        emissao:
+          type: string
+          description: Data da emissão da fatura
+        glosa:
+          type: number
+          description: Glosa da fatura
+        id:
+          type: integer
+          description: ID da fatura
+        informacao_complementar:
+          type: string
+          description: Informação complementar da fatura
+        juros:
+          type: number
+          description: Juros da fatura
+        justificativa_fatura_id:
+          type: string
+          description: Justificativa da fatura
+        mesref:
+          type: integer
+          description: Mês de referência da fatura
+        multa:
+          type: number
+          description: Multa da fatura
+        numero:
+          type: string
+          description: Número do contrato
+        prazo:
+          type: string
+          description: Prazo da fatura
+        processo:
+          type: string
+          description: Processo administrativo referente a fatura
+        protocolo:
+          type: string
+          description: Data do protocolo da fatura
+        repactuacao:
+          type: string
+          description: Repactuação
+        situacao:
+          type: string
+          description: Situação da fatura
+        tipo_lista_fatura_id:
+          type: string
+          description: Descrição do tipo da fatura
+        valor:
+          type: number
+          description: Valor da fatura
+        valor_liquido:
+          type: number
+          description: Valor líquido da fatura
+        vencimento:
+          type: string
+          description: Vencimento da fatura
+      required:
+        - id
+        - contrato_id
+    Garantias:
+      properties:
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        id:
+          type: integer
+          description: ID
+        tipo:
+          type: string
+          description: Tipo de garantia
+        valor:
+          type: number
+          description: Valor da garantia
+        vencimento:
+          type: string
+          description: Vencimento da garantia
+      required:
+        - id
+        - contrato_id
+    Historicos:
+      properties:
+        categoria:
+          type: string
+          description: Categoria do objeto do contrato
+        codigo_tipo:
+          type: integer
+          description: Código do tipo
+        codigo_unidade_origem:
+          type: string
+          description: Código da UASG origem do contrato
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        data_assinatura:
+          type: string
+          description: Data de assinatura do contrato
+        data_inicio_novo_valor:
+          type: string
+          description: Data de início do novo valor no contrato
+        data_publicacao:
+          type: string
+          description: Data da publicação do contrato
+        fornecedor:
+          type: string
+          description: Tipo do fornecedor
+        fundamento_legal_aditivo:
+          type: string
+          description: Fundamento legal do termo aditivo
+        gestao:
+          type: integer
+          description: Código de gestão orçamentária da UASG
+        id:
+          type: integer
+          description: ID
+        informacao_complementar:
+          type: string
+          description: Informação complementar da contratação
+        licitacao_numero:
+          type: string
+          description: Identificador da licitação
+        modalidade:
+          type: string
+          description: Descrição da modalidade da licitação
+        nome_unidade_origem:
+          type: string
+          description: Nome da UASG origem do contrato
+        novo_num_parcelas:
+          type: string
+          description: Novo número de parcelas do contrato promovido pelo novo termo inserido
+        novo_valor_global:
+          type: string
+          description: Novo valor global do contrato promovido pelo novo termo inserido
+        novo_valor_parcela:
+          type: string
+          description: Novo valor da parcela do contrato promovido pelo novo termo inserido
+        num_parcelas:
+          type: string
+          description: Número de parcelas do contrato
+        numero:
+          type: string
+          description: Número do contrato
+        objeto:
+          type: string
+          description: Descrição do objeto contratado
+        observacao:
+          type: string
+          description: Observação
+        processo:
+          type: string
+          description: Número do processo adminstrativo da contratação
+        receita_despesa:
+          type: string
+          description: Tipo de contrato
+        retroativo:
+          type: string
+          description: Se o histórico é retroativo
+        retroativo_anoref_ate:
+          type: integer
+          description: Ano final (Caso haja valor retroativo a ser pago à empresa)
+        retroativo_anoref_de:
+          type: integer
+          description: Ano inicial (Caso haja valor retroativo a ser pago à empresa)
+        retroativo_mesref_ate:
+          type: integer
+          description: Mês final (Caso haja valor retroativo a ser pago à empresa)
+        retroativo_mesref_de:
+          type: integer
+          description: Mês inicial (Caso haja valor retroativo a ser pago à empresa)
+        retroativo_valor:
+          type: number
+          description: Valor total do retroativo (Caso haja valor retroativo a ser pago
+            à empresa)
+        retroativo_vencimento:
+          type: string
+          description: Data de vencimento do retroativo (Caso haja valor retroativo a ser
+            pago à empresa)
+        tipo:
+          type: string
+          description: Descrição do tipo do termo de contrato
+        ug:
+          type: string
+          description: Código da UASG
+        valor_global:
+          type: number
+          description: Valor global do contrato
+        valor_inicial:
+          type: number
+          description: Valor inicial do contrato
+        valor_parcela:
+          type: number
+          description: Valor de cada parcela do contrato
+        vigencia_fim:
+          type: string
+          description: Data de término da vigência do contrato
+        vigencia_inicio:
+          type: string
+          description: Data de início da vigência do contrato
+      required:
+        - id
+        - contrato_id
+    Itens:
+      properties:
+        catmatser_item_id:
+          type: string
+          description: Descrição do item do contrato
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        descricao_complementar:
+          type: string
+          description: Descrição complementar do item
+        grupo_id:
+          type: string
+          description: Descrição do grupo do item
+        id:
+          type: integer
+          description: ID
+        quantidade:
+          type: integer
+          description: Quantidade do item
+        tipo_id:
+          type: integer
+          description: Descrição do tipo de item (material ou serviço)
+        valor_total:
+          type: number
+          description: Valor total do item
+        valor_unitario:
+          type: number
+          description: Valor unitário do item
+      required:
+        - id
+        - contrato_id
+    Prepostos:
+      properties:
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        data_fim:
+          type: string
+          description: Data de fim do exercício do preposto
+        data_inicio:
+          type: string
+          description: Data de início do exercício do preposto
+        doc_formalizacao:
+          type: string
+          description: Documento de formalização do preposto
+        id:
+          type: integer
+          description: ID
+        informacao_complementar:
+          type: string
+          description: Informação complementar
+        situacao:
+          type: string
+          description: Situação do preposto
+      required:
+        - id
+        - contrato_id
+    Responsaveis:
+      properties:
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        data_fim:
+          type: string
+          description: Data de fim do reponsável
+        data_inicio:
+          type: string
+          description: Data de início do reponsável
+        funcao_id:
+          type: string
+          description: Função do responsável
+        id:
+          type: integer
+          description: ID
+        instalacao_id:
+          type: string
+          description: Local de atuação do reponsável
+        portaria:
+          type: string
+          description: Portaria de nomeação do reponsável
+        situacao:
+          type: string
+          description: Situação do reponsável marca_de_verificação_branca olhos mãos_para_cima
+      required:
+        - id
+        - contrato_id
+    Terceirizados:
+      properties:
+        aux_transporte:
+          type: string
+          description: Valor do auxílio transporte
+        contrato_id:
+          type: integer
+          description: ID do contrato
+        custo:
+          type: number
+          description: Custo total do posto de trabalho ao qual o terceirizado está alocado
+        data_fim:
+          type: string
+          description: Data de fim das atividades do terceirizado no posto de trabalho
+        data_inicio:
+          type: string
+          description: Data de início das atividades do terceirizado no posto de trabalho
+        descricao_complementar:
+          type: string
+          description: Descrição complementar do terceirizado
+        escolaridade:
+          type: string
+          description: Escolaridade do terceirizado
+        funcao:
+          type: string
+          description: Função do terceirizado
+        id:
+          type: integer
+          description: ID
+        jornada:
+          type: integer
+          description: Jornada do terceirizado em horas semanais
+        situacao:
+          type: string
+          description: Situação do terceirizado
+        unidade:
+          type: string
+          description: Unidade administrativa do posto de trabalho do terceirizado
+        vale_alimentacao:
+          type: number
+          description: Valor do vale alimentação
+      required:
+        - id
+        - contrato_id
