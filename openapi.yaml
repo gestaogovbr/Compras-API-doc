@@ -4,6 +4,8 @@ info:
     Dados Abertos do Sistema Integrado de Administração e Serviços Gerais - SIASG.
 
     O SIASG é o sistema onde se operacionaliza as compras do Governo Federal. Essa operacionalização se dá em diversos módulos, contemplando o catálogo de materiais e serviços (CATMAT / CATSER), o cadastramento e divulgação da licitação (SIDEC, Divulgação), as intenções de registros de preços (IRP), o cadastramento dos fornecedores (SICAF), a realização das licitações (Compras governamentais, Sessão Pública, RDC), o resultado das licitações (SISPP, SISRP), os empenhos de pagamentos (SISME) e o registro e gestão dos contratos (SICON).
+
+    ***Dados de contratos a partir de 2021 realizadas pelo Governo Federal***
   version: "1.0.0"
   title: API de Compras Governamentais
   termsOfService: 'http://compras.dados.gov.br/docs/home.html'
@@ -33,6 +35,13 @@ paths:
       description: Retorna uma lista com todos os contratos
       operationId: Contratos
       parameters:
+      - name: id
+        in: query
+        required: false
+        description: 'Id do contrato (Ex.: id=1615)'
+        schema:
+          type: integer
+          default: null
       - name: categoria
         in: query
         required: false
@@ -75,17 +84,17 @@ paths:
         schema:
           type: string
           default: null
-      - name: data_assinatura_max
-        in: query
-        required: false
-        description: 'Data máxima da assinatura (Ex.: data_assinatura_max=2021-04-20)'
-        schema:
-          type: string
-          default: null
       - name: data_assinatura_min
         in: query
         required: false
         description: 'Data mínima da assinatura (Ex.: data_assinatura_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_assinatura_max
+        in: query
+        required: false
+        description: 'Data máxima da assinatura (Ex.: data_assinatura_max=2021-04-20)'
         schema:
           type: string
           default: null
@@ -96,17 +105,17 @@ paths:
         schema:
           type: string
           default: null
-      - name: data_publicacao_max
-        in: query
-        required: false
-        description: 'Data máxima de publicação (Ex.: data_publicacao_max=2021-04-20)'
-        schema:
-          type: string
-          default: null
       - name: data_publicacao_min
         in: query
         required: false
         description: 'Data mínima de publicação (Ex.: data_publicacao_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: data_publicacao_max
+        in: query
+        required: false
+        description: 'Data máxima de publicação (Ex.: data_publicacao_max=2021-04-20)'
         schema:
           type: string
           default: null
@@ -138,13 +147,6 @@ paths:
         description: 'Fundamento legal (Ex.: fundamento_legal=lei 8.666/93)'
         schema:
           type: string
-          default: null
-      - name: id
-        in: query
-        required: false
-        description: 'Id do contrato (Ex.: id=1615)'
-        schema:
-          type: integer
           default: null
       - name: informacao_complementar
         in: query
@@ -346,31 +348,17 @@ paths:
         schema:
           type: number
           default: null
-      - name: vigencia_fim
-        in: query
-        required: false
-        description: 'Data do fim da vigência (Ex.: vigencia_fim=2021-04-20)'
-        schema:
-          type: string
-          default: null
-      - name: vigencia_fim_max
-        in: query
-        required: false
-        description: 'Data máxima do fim da vigência (Ex.: vigencia_fim_max=2021-04-20)'
-        schema:
-          type: string
-          default: null
-      - name: vigencia_fim_min
-        in: query
-        required: false
-        description: 'Data mínima do fim da vigência (Ex.: vigencia_fim_min=2021-04-20)'
-        schema:
-          type: string
-          default: null
       - name: vigencia_inicio
         in: query
         required: false
         description: 'Data do início da vigência (Ex.: vigencia_inicio=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_inicio_min
+        in: query
+        required: false
+        description: 'Data mínima do início da vigência (Ex.: vigencia_inicio_min=2021-04-20)'
         schema:
           type: string
           default: null
@@ -381,10 +369,24 @@ paths:
         schema:
           type: string
           default: null
-      - name: vigencia_inicio_min
+      - name: vigencia_fim
         in: query
         required: false
-        description: 'Data mínima do início da vigência (Ex.: vigencia_inicio_min=2021-04-20)'
+        description: 'Data do fim da vigência (Ex.: vigencia_fim=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_fim_min
+        in: query
+        required: false
+        description: 'Data mínima do fim da vigência (Ex.: vigencia_fim_min=2021-04-20)'
+        schema:
+          type: string
+          default: null
+      - name: vigencia_fim_max
+        in: query
+        required: false
+        description: 'Data máxima do fim da vigência (Ex.: vigencia_fim_max=2021-04-20)'
         schema:
           type: string
           default: null
@@ -2004,4 +2006,4 @@ components:
       required:
         - id
         - contrato_id
-        
+
