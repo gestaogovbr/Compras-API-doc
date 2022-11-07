@@ -6,13 +6,13 @@ info:
     O SIASG é o sistema onde se operacionaliza as compras do Governo Federal. Essa operacionalização se dá em diversos módulos, contemplando o catálogo de materiais e serviços (CATMAT / CATSER), o cadastramento e divulgação da licitação (SIDEC, Divulgação), as intenções de registros de preços (IRP), o cadastramento dos fornecedores (SICAF), a realização das licitações (Compras governamentais, Sessão Pública, RDC), o resultado das licitações (SISPP, SISRP), os empenhos de pagamentos (SISME) e o registro e gestão dos contratos (SICON).
 
     ***Dados de contratos a partir de 2021 realizadas pelo Governo Federal***
-  version: "1.0.0"
+  version: "1.0.1"
   title: API de Compras Governamentais
-  termsOfService: 'http://compras.dados.gov.br/docs/home.html'
+  termsOfService: 'https://compras.dados.gov.br/docs/home.html'
   contact:
     email: seges.cginf@economia.gov.br
 servers:
-- url: http://compras.dados.gov.br
+- url: https://compras.dados.gov.br
 
 tags:
 - name: Contratos
