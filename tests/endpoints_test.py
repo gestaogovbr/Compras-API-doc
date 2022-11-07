@@ -34,8 +34,8 @@ path_endpoints = [
 
 ]
 
-@pytest.mark.parametrize("server", ["http://compras.dados.gov.br/docs/",
-                                "http://api.compras.dados.gov.br"]
+@pytest.mark.parametrize("server", ["https://compras.dados.gov.br/docs/",
+                                "https://api.compras.dados.gov.br"]
                         )
 def test_url_is_reachable(server: list):
     """
