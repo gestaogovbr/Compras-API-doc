@@ -16,7 +16,7 @@ path_endpoints = [
     "/comprasContratos/doc/contrato/84650/despesas_acessorias",
     "/comprasContratos/doc/contrato/84650/despesas_acessorias/215",
     "/comprasContratos/doc/contrato/50500/empenhos",
-    "/comprasContratos/doc/contrato/2629/empenhos/8415275",
+    "/comprasContratos/doc/contrato/50500/empenhos/7197607",
     "/comprasContratos/doc/contrato/36939/faturas",
     "/comprasContratos/doc/contrato/94113/faturas/78330",
     "/comprasContratos/doc/contrato/105754/garantias",

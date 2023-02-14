@@ -1121,14 +1121,14 @@ paths:
         description: Id do contrato
         schema:
           type: integer
-          default: 2629
+          default: 50500
       - name: empenho
         in: path
         required: true
         description: Id do empenho
         schema:
           type: integer
-          default: 8415275
+          default: 7197607
 
       responses:
         200:
